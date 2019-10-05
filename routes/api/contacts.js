@@ -3,14 +3,14 @@ const contactRouter = express.Router();
 const Contact = require("../../models/contacts");
 
 contactRouter.get("/getList", (req, res) => {
-  //   console.log("user_id = ", req.query.userId);
+  //   console.log("user_id = ", req.cookies.userId );
   Contact.find({ userId: req.cookies.userId }).then(contacts =>
     res.json(contacts)
   );
 });
 
 contactRouter.get("/getRecentList", (req, res) => {
-  //   console.log("user_id = ", req.query.userId);
+  //   console.log("user_id = ", req.cookies.userId );
   Contact.find({ userId: req.cookies.userId }).then(contacts => {
     if (contacts.length <= 5) res.json(contacts);
     else {

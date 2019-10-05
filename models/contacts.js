@@ -4,7 +4,7 @@ const contactSchema = new mongoose.Schema({
   lastName: String,
   email: String,
   mobile: String,
-  userId: [{ type: mongoose.Schema.Types.ObjectId, ref: "Users" }]
+  userId: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }]
 });
-const Contacts = mongoose.model("Todo", contactSchema);
+const Contacts = mongoose.model("Contact", contactSchema);
 module.exports = Contacts;

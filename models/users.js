@@ -41,5 +41,5 @@ UsersSchema.methods.toAuthJSON = function() {
     token: this.generateJWT(),
   };
 };
-const User = mongoose.model("Users",UsersSchema);
+const User = mongoose.model("User",UsersSchema);
 module.exports =User; 

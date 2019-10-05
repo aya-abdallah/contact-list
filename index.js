@@ -6,8 +6,6 @@ const session = require("express-session");
 const port = process.env.PORT || 3000;
 const cookieParser = require('cookie-parser');
 
-app.use(cookieParser());
-
 const mogoURL =
   process.env.URL ||
   "mongodb+srv://aya:aya123@mycluster-rjzla.mongodb.net/test?retryWrites=true&w=majority";
@@ -27,6 +25,7 @@ mongoose.connect(
 );
 
 require('./models/users');
+require('./config/passport');
 
 app.use(
   session({
@@ -36,13 +35,10 @@ app.use(
     saveUninitialized: false
   })
 );
-
-// app.use(require('morgan')('dev'));
+app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
 app.use(express.json());
-require('./config/passport');
 app.use(require('./routes'));
 
 app.listen(port, () => {
