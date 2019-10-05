@@ -5,7 +5,6 @@ const auth = require("../auth");
 const User = require("../../models/users");
 
 router.post("/", auth.optional, (req, res, next) => {
-  //   const { body: { user } } = req;
   console.log("body === ", req.body);
   const user = req.body;
   if (!user.email) {
